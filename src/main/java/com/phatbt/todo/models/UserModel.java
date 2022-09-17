@@ -1,5 +1,5 @@
 package com.phatbt.todo.models;
 
-public class Users {
+public class UserModel {
 
 }
