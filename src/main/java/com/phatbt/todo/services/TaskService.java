@@ -1,8 +1,17 @@
 package com.phatbt.todo.services;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service
-public class TaskService {
+import com.phatbt.todo.dto.TaskDto;
+import com.phatbt.todo.entities.Task;
 
+public interface TaskService {
+	
+	Task saveTask(TaskDto taskDto);
+	
+	Task updateTask(TaskDto taskDto);
+	
+	void deleteTask(int taskId);
+	
+	List<Task> findAllTasks();
 }

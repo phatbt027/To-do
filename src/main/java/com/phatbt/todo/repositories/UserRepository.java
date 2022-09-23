@@ -1,9 +1,11 @@
 package com.phatbt.todo.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import com.phatbt.todo.entities.Users;
+import com.phatbt.todo.entities.User;
 
-public interface UserRepository extends JpaRepository<Users, Integer> {
-
+@Repository
+public interface UserRepository extends JpaRepository<User, Integer> {
+	
 }

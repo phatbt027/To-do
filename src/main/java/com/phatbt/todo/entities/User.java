@@ -12,14 +12,14 @@ import lombok.Data;
 @Entity
 @Table(name = "USER")
 @Data
-public class Users {
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
 	@Column(name = "user_name", nullable = false)
-	private String username;
+	private String userName;
 	
 	@Column(name = "password", nullable = false)
 	private String password;
