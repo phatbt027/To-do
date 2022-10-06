@@ -54,13 +54,13 @@ public class TaskServiceImpl implements TaskService {
 		Task task = this.taskRepo.findById(taskId)
 				.orElseThrow(() -> new ResourceNotFoundException("Task Not Found!!!"));
 		
-		this.taskRepo.deleteById(taskId);
+		this.taskRepo.deleteById(task.getId());	
 	}
 
 	@Override
 	public List<Task> findAllTasks() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return taskRepo.findAll();
 	}
 
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.phatbt.todo.dto.UserDto;
@@ -15,33 +16,34 @@ import com.phatbt.todo.entities.User;
 import com.phatbt.todo.services.UserService;
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
 	
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping("/users")
+	@GetMapping
 	public List<User> showAllUsers() {
 		
 		return this.userService.findAllUsers();
 	}
 	
-	@PostMapping("/user")
+	@PostMapping("add")
 	public User addUser(@RequestBody UserDto userDto) {
 		
 		return this.userService.saveUser(userDto);
 	}
 	
-	@PutMapping("/user/{userId}")
+	@PutMapping("update/{userId}")
 	public User editUser(@RequestBody UserDto userDto) {
 		
 		return this.userService.updateUser(userDto);
 	}
 	
-	@DeleteMapping("user/{userId}")
+	@DeleteMapping("delete/{userId}")
 	public String deleteUser(@RequestBody UserDto userDto) {
 		
-		this.userService.deleteUser(userDto.getId());
+		this.userService.deleteUser(userDto);
 		
 		return "Delete Successfully";
 	}

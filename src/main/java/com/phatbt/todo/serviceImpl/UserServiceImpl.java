@@ -6,7 +6,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.phatbt.todo.dto.UserDto;
@@ -21,14 +21,20 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepo;
 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	@Override
 	public User saveUser(UserDto userDto) {
 		
 		User user = new User();
 		
+		userDto.setPassword(this.passwordEncoder.encode(userDto.getPassword()));
+		
 		user.setId(userDto.getId());
 		user.setUserName(userDto.getUserName());
 		user.setPassword(userDto.getPassword());
+		user.setEmail(userDto.getEmail());
 		user.setFirstName(userDto.getFirstName());
 		user.setLastName(userDto.getLastName());
 		
@@ -42,9 +48,12 @@ public class UserServiceImpl implements UserService {
 		User user = this.userRepo.findById(userDto.getId())
 				.orElseThrow(() -> new ResourceNotFoundException("User Id Not Found!!!"));
 		
+		userDto.setPassword(this.passwordEncoder.encode(userDto.getPassword()));
+		
 		user.setId(userDto.getId());
 		user.setUserName(userDto.getUserName());
 		user.setPassword(userDto.getPassword());
+		user.setEmail(userDto.getEmail());
 		user.setFirstName(userDto.getFirstName());
 		user.setLastName(userDto.getLastName());
 		
@@ -53,9 +62,9 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional
 	@Override
-	public void deleteUser(int userId) {
+	public void deleteUser(UserDto userDto) {
 		
-		User user = this.userRepo.findById(userId)
+		User user = this.userRepo.findById(userDto.getId())
 				.orElseThrow(() -> new ResourceNotFoundException("User Id Not Found!!!"));
 		
 		this.userRepo.delete(user);
