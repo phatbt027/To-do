@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+    <link th:href="@{/css/auth/login.css}" rel="stylesheet">
+    <link th:href="@{/css/home/home.css}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-scroll shadow-0" style="background-color: #ffede7;">
+            <div class="container">
+              <a class="navbar-brand" href="#">Todo</a>
+              <button class="navbar-toggler ps-0" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
+                aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="d-flex justify-content-start align-items-center">
+                  <i class="fas fa-bars"></i>
+                </span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarExample01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item active">
+                    <a class="nav-link px-3" href="#!">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link px-3" href="#!">about us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link px-3" href="#!">contact us</a>
+                  </li>
+                </ul>
+          
+                <ul class="navbar-nav flex-row">
+                  <li class="nav-item">
+                    <a class="btn-white text-decoration-none" href="#!/login" style="color: #7f4722;">
+                      Sign in
+                    </a>
+                  </li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                  <li class="nav-item">
+                    <a class="btn-white text-decoration-none" href="#!/register" style="color: #7f4722;">
+                      Sign up
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+    
+    <article>
+          <div ng-view></div>
+    </article>
+    
+    <footer style="background-color: #ffede7;">
+        <div
+          class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5">
+          <!-- Copyright -->
+          <div class="text-dark mb-3 mb-md-0">
+            Copyright © 2022. All rights reserved.
+          </div>
+          <!-- Copyright -->
+      
+          <!-- Right -->
+          <div>
+            <a href="#!" class="text-dark me-4">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#!" class="text-dark me-4">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#!" class="text-dark me-4">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="#!" class="text-dark">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+          <!-- Right -->
+        </div>
+      </footer>
+</body>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+<script type="text/javascript" th:src="@{/js/home/home.js}"></script>
+</html>

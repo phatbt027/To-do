@@ -17,30 +17,30 @@ import com.phatbt.todo.services.TaskService;
 
 @RestController
 @RequestMapping("/task")
-public class TaskController {
+public class TaskRestController {
 	
 	@Autowired
 	private TaskService taskService;
 
-	@GetMapping("/tasks")
-	public List<Task> getAllTask() {
+	@GetMapping
+	public List<Task> showAllTask() {
 		
 		return this.taskService.findAllTasks();
 	}
 	
-	@PostMapping("/task")
+	@PostMapping("add")
 	public Task addTask(@RequestBody TaskDto taskDto) {
-		
+
 		return this.taskService.saveTask(taskDto);
 	}
 	
-	@PutMapping("/task/{id}")
+	@PutMapping("edit/{taskId}")
 	public Task editTask(@RequestBody TaskDto taskDto) {
 		
 		return this.taskService.updateTask(taskDto);
 	}
 	
-	@DeleteMapping("/task/{id}")
+	@DeleteMapping("delete/{taskId}")
 	public String removeTask(@RequestBody TaskDto taskDto) {
 		
 		this.taskService.deleteTask(taskDto.getId());
